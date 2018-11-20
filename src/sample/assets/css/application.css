@@ -1,0 +1,17 @@
+/*Main*/
+.bg{
+	-fx-background-color: black;
+	-fx-opacity:0.7;
+}
+.background{
+	-fx-background-image: url("../img/gau.jpg");
+}
+.btn{
+	-fx-background-color:#22c14d;
+	-fx-text-fill :white;
+}
+
+/*adminpage*/
+.adminbg{
+	-fx-background-image: url("../img/adminpage.jpg");
+}
