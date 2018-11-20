@@ -25,7 +25,7 @@ public class DBHandler extends Config {
     public ResultSet getUser(User user) {
         ResultSet resSet = null;
 
-        String select = "SELECT * FROM " + Constants.USER_TABLE + " WHERE " + Constants.USERS_USERNAME + "=? AND " + Constants.USERS_PASSWORD + "=?" + Constants.USERS_PERMISSION + "=?";
+        String select = "SELECT * FROM " + Constants.USER_TABLE + " WHERE " + Constants.USERS_USERNAME + "=? AND " + Constants.USERS_PASSWORD + "=?";
 
         try {
             PreparedStatement prSt = getDbConnection().prepareStatement(select);

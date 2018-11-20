@@ -88,7 +88,13 @@ public class LoginController {
 
     }
 
+    public String[] getLoginInfo(){
+        String usernameField = username.getText().trim();
+        String passwordField = password.getText().trim();
+        String[] returnArr = new String[]{usernameField,passwordField};
+        return returnArr;
 
+    }
 
     public void closeWindow(Button btn){
         btn.getScene().getWindow().hide();

@@ -11,10 +11,10 @@ public class User {
     private String permission;
 
     //login constructor
-    public User(String username, String password, String permission){
+    public User(String username, String password){
         this.username = username;
         this.password = password;
-        this.permission = permission;
+
 
     }
 
