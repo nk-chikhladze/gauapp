@@ -14,6 +14,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TableView;
 
 public class StudentsController implements Initializable {
 
@@ -50,20 +51,32 @@ public class StudentsController implements Initializable {
             LoginController lc = new LoginController();
             String[] loginInfo = lc.getLoginInfo();
 
+
+
             User getInfo = new User(loginInfo[0], loginInfo[1]);
             DBHandler dbHandler = new DBHandler();
             ResultSet resSet = dbHandler.getUser(getInfo);
 
-            AdminController ac = new AdminController();
-            try {
-                while (resSet.next()){
-                    ac.colId.setText(resSet.getString("id"));
-                    ac.colUser.setText(resSet.getString("username"));
-                    ac.colPass.setText(resSet.getString("password"));
-                };
-            }catch (Exception ex){
 
-            }
+            AdminController ac = new AdminController(resSet);
+//            ac.check();
+            ac.fillTable();
+
+            lc.closeWindow(selBtn);
+            //Data is brought, need to show it somewhere
+
+//            try {
+//
+//                while (resSet.next()){
+//                    ac.colId.setText(Integer.toString(resSet.getInt("id")));
+//                    ac.colUser.setText(resSet.getString("username"));
+//                    ac.colPass.setText(resSet.getString("password"));
+//                    ac.colPass.setText(Integer.toString(resSet.getInt("permission")));
+//                };
+//
+//            }catch (Exception ex){
+//
+//            }
 
         });
     }

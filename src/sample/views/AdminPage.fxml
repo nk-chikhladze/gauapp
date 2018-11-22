@@ -22,11 +22,12 @@
                 </Text>
             </children>
         </AnchorPane>
-      <TableView layoutX="127.0" layoutY="3.0" prefHeight="394.0" prefWidth="473.0">
+      <TableView fx:id="tableVIew" layoutX="127.0" layoutY="3.0" prefHeight="394.0" prefWidth="473.0">
         <columns>
           <TableColumn fx:id="colId" prefWidth="75.0" text="ID" />
           <TableColumn fx:id="colUser" prefWidth="75.0" text="Username" />
             <TableColumn fx:id="colPass" prefWidth="75.0" text="Password" />
+            <TableColumn fx:id="colPerm" prefWidth="75.0" text="Permission" />
         </columns>
       </TableView>
     </children>

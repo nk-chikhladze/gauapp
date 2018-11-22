@@ -15,6 +15,8 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class LoginController {
+    public String user,pass;
+
     @FXML
     private ResourceBundle resources;
 
@@ -40,6 +42,10 @@ public class LoginController {
         loginButton.setOnMouseClicked((event) -> {
             String usernameField = username.getText().trim();
             String passwordField = password.getText().trim();
+
+            this.user = usernameField;
+            this.pass = passwordField;
+
             DBHandler dbHandler = new DBHandler();
             try {
                 dbHandler.getDbConnection();
@@ -89,9 +95,9 @@ public class LoginController {
     }
 
     public String[] getLoginInfo(){
-        String usernameField = username.getText().trim();
-        String passwordField = password.getText().trim();
-        String[] returnArr = new String[]{usernameField,passwordField};
+//        String usernameField = username.getText().trim();
+//        String passwordField = password.getText().trim();
+        String[] returnArr = new String[]{this.user,this.pass};
         return returnArr;
 
     }

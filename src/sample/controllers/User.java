@@ -1,14 +1,17 @@
 package sample.controllers;
 
+import javafx.collections.ObservableList;
+
 public class User {
     private String firstname;
     private String lastname;
     private String location;
     private String gender;
-
+    private int id;
     private String username;
     private String password;
-    private String permission;
+    private int permission;
+
 
     //login constructor
     public User(String username, String password){
@@ -32,6 +35,9 @@ public class User {
     public User() {
 
     }
+    public int getId(){ return id; }
+
+    public void setId(int id){ this.id = id; }
 
     public String getFirstname() {
         return firstname;
@@ -65,11 +71,11 @@ public class User {
         this.password = password;
     }
 
-    public String getPermission() {
+    public int getPermission() {
         return permission;
     }
 
-    public void setPermission(String permission) { this.permission = permission; }
+    public void setPermission(int permission) { this.permission = permission; }
 
     public String getLocation() {
         return location;
@@ -86,4 +92,6 @@ public class User {
     public void setGender(String gender) {
         this.gender = gender;
     }
+
+
 }
