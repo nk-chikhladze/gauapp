@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Ellipse?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="498.0" prefWidth="760.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.MassengerController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#051e36" height="95.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="760.0" />
+      <Label layoutX="87.0" layoutY="27.0" text="Qutatela" textFill="#fc7711" />
+      <ComboBox fx:id="combo1" layoutX="87.0" layoutY="48.0" prefHeight="17.0" prefWidth="95.0" />
+      <Line endX="8.0" endY="386.0" layoutX="179.0" layoutY="111.0" startX="8.0" startY="-15.0" stroke="#bcb8b8" strokeWidth="2.0" />
+      <Label layoutY="95.0" prefHeight="45.0" prefWidth="186.0" style="-fx-background-color: WHITE;" />
+      <Label layoutY="140.0" prefHeight="45.0" prefWidth="186.0" style="-fx-background-color: LIGHTGREY;" />
+      <Label layoutY="185.0" prefHeight="45.0" prefWidth="186.0" style="-fx-background-color: WHITE;" />
+      <Label layoutY="230.0" prefHeight="45.0" prefWidth="186.0" style="-fx-background-color: LIGHTGREY;" />
+      <Label layoutY="271.0" prefHeight="45.0" prefWidth="186.0" style="-fx-background-color: WHITE;" />
+      <Label layoutY="316.0" prefHeight="45.0" prefWidth="186.0" style="-fx-background-color: LIGHTGREY;" />
+      <Label layoutY="361.0" prefHeight="45.0" prefWidth="186.0" style="-fx-background-color: WHITE;" />
+      <Label layoutY="406.0" prefHeight="45.0" prefWidth="186.0" style="-fx-background-color: LIGHTGREY;" />
+      <Label layoutY="451.0" prefHeight="45.0" prefWidth="186.0" style="-fx-background-color: WHITE;" />
+      <TextField layoutX="189.0" layoutY="459.0" prefHeight="38.0" prefWidth="484.0" />
+      <Button layoutX="674.0" layoutY="458.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="85.0" style="-fx-background-color: #6ebf6d;" text="Send" textFill="WHITE" />
+      <Text fill="#807676" layoutX="380.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ONLINE">
+         <font>
+            <Font name="Comic Sans MS" size="32.0" />
+         </font>
+      </Text>
+      <Text fill="#e74c14" layoutX="512.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CHAT">
+         <font>
+            <Font name="Comic Sans MS" size="32.0" />
+         </font>
+      </Text>
+      <ImageView fitHeight="65.0" fitWidth="85.0" layoutX="295.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/img/gau.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="25.0" fitWidth="33.0" layoutX="724.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/img/x.png" />
+         </image>
+      </ImageView>
+      <Ellipse fill="#1fd307" layoutX="14.0" layoutY="118.0" radiusX="4.0" radiusY="5.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Ellipse fill="#1fd307" layoutX="14.0" layoutY="163.0" radiusX="4.0" radiusY="5.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="24.0" layoutY="102.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/img/men.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="38.0" fitWidth="32.0" layoutX="24.0" layoutY="147.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/img/women.png" />
+         </image>
+      </ImageView>
+      <Text layoutX="64.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Qutatela" />
+      <Text layoutX="64.0" layoutY="167.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nino" />
+      <ImageView fitHeight="52.0" fitWidth="65.0" layoutX="14.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/img/men.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

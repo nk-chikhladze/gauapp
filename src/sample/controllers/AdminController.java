@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.util.ResourceBundle;
+
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,6 +15,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 public class AdminController implements Initializable{
@@ -35,7 +38,7 @@ public class AdminController implements Initializable{
     public TableView<?> tableVIew;
 
     @FXML
-    public TableColumn<String, String> colId;
+    public TableColumn<?, ?> colId;
 
     @FXML
     public TableColumn<?, ?> colUser;
@@ -67,18 +70,38 @@ public class AdminController implements Initializable{
             int count = 0;
             while(this.res.next()){
                 //aq unda moxdes tableshi informaciis chawera
-                //System.out.println("ID: " + this.res.getInt("id") + " Username: " + this.res.getString("username") + " Password: " + this.res.getString("password") + " Permission: " + this.res.getInt("permission"));
+                System.out.println("ID: " + this.res.getInt("id") + " Username: " + this.res.getString("username") + " Password: " + this.res.getString("password") + " Permission: " + this.res.getInt("permission"));
+
                 User newUser = new User();
                 newUser.setId(this.res.getInt("id"));
                 newUser.setUsername(this.res.getString("username"));
                 newUser.setPassword(this.res.getString("password"));
                 newUser.setPermission(this.res.getInt("permission"));
 
-                TableView<User> table = new TableView<User>();
-                TableColumn<User, Integer> userIdCol = new TableColumn<User, Integer>("ID");
-                TableColumn<User, String> userUsernameCol = new TableColumn<User, String>("Username");
-                TableColumn<User, String> userPasswordCol = new TableColumn<User, String>("Password");
-                TableColumn<User, Integer> userPermissionCol = new TableColumn<User, Integer>("Permission");
+
+//                TableView<String> table = new TableView<>();
+
+//                TableColumn userIdCol = new TableColumn("ID");
+//                TableColumn<User, String> userUsernameCol = new TableColumn<User, String>("Username");
+//                TableColumn<User, String> userPasswordCol = new TableColumn<User, String>("Password");
+//                TableColumn<User, Integer> userPermissionCol = new TableColumn<User, Integer>("Permission");
+
+//                userIdCol.setCellValueFactory(new PropertyValueFactory<>("IDasd"));
+//                userIdCol.setText("asd");
+//                tableVIew.setEditable(true);
+//                ObservableList<String> list = newUser.getList();
+//                tableVIew.getColumns().addAll(userIdCol);
+//                tableVIew.refresh();
+//                tableVIew.setItems(list);
+//                table.setItems(list);
+//                colId.setText("asd");
+
+//                table.refresh();
+
+
+
+//                table.getColumns().addAll(userIdCol, userUsernameCol, userPasswordCol, userPermissionCol);
+
 
 
 
@@ -107,6 +130,8 @@ public class AdminController implements Initializable{
         assert colUser != null : "fx:id=\"colUser\" was not injected: check your FXML file 'AdminPage.fxml'.";
         assert colPass != null : "fx:id=\"colPass\" was not injected: check your FXML file 'AdminPage.fxml'.";
         assert colPerm != null : "fx:id=\"colPerm\" was not injected: check your FXML file 'AdminPage.fxml'.";
+
+
 
 
     }

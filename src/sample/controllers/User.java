@@ -1,5 +1,6 @@
 package sample.controllers;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 public class User {
@@ -91,6 +92,17 @@ public class User {
 
     public void setGender(String gender) {
         this.gender = gender;
+    }
+
+    public ObservableList<String> getList(){
+        ObservableList<String> list = FXCollections.observableArrayList();
+        list.add("id");
+        list.add(getUsername());
+        list.add(getPassword());
+        list.add("permission");
+
+
+        return list;
     }
 
 
