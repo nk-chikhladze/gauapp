@@ -18,41 +18,16 @@ public class DBHandler extends Config {
         return dbConnection;
     }
 
-    public ResultSet getUser(User user) {
+    public ResultSet getFullUser(User user) {
         ResultSet resSet = null;
 
-//        String select = "SELECT * FROM " + Constants.USER_TABLE;
-//        String select = "SELECT * FROM " + Constants.USER_TABLE + " WHERE " + Constants.USERS_USERNAME + "=? AND " + Constants.USERS_PASSWORD + "=?";
-
         try {
-//            PreparedStatement prSt = getDbConnection().prepareStatement(select);
-
-
-//            prSt.setString(0, "secret");
-//            prSt.setString(1, user.getUsername());
-//            prSt.setString(2, user.getPassword());
-//            prSt.setString(3, user.getPermission());
-//            System.out.println("We here");
 
             Statement stmt = null;
             stmt = getDbConnection().createStatement();
             String sql = "SELECT * FROM Users";
             resSet = stmt.executeQuery(sql);
 
-//            while(resSet.next()){
-//                int id  = resSet.getInt("id");
-//                String userr = resSet.getString("username");
-//                String pass = resSet.getString("password");
-//                int perm = resSet.getInt("permission");
-//
-//                //Display values
-//                System.out.print("ID: " + id);
-//                System.out.print(", user: " + userr);
-//                System.out.print(", pass: " + pass);
-//                System.out.println(", perm: " + perm);
-//            }
-
-//            resSet = prSt.executeQuery();
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
@@ -60,5 +35,55 @@ public class DBHandler extends Config {
         }
 
         return resSet;
+    }
+
+    public ResultSet getLogin(User user){
+        ResultSet resSet = null;
+
+        try {
+
+            Statement stmt = null;
+            stmt = getDbConnection().createStatement();
+            String sql = "SELECT username,password,permission FROM Users";
+            resSet = stmt.executeQuery(sql);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        return resSet;
+    }
+
+    public void registerUser(User user){
+        String username,password;
+
+
+        username = user.getUsername();
+        password = user.getPassword();
+
+        String insert = "INSERT INTO " +
+                    Constants.USER_TABLE +
+                    "(" +
+                    Constants.USERS_USERNAME + "," +
+                    Constants.USERS_PASSWORD + "," +
+                    Constants.USERS_PERMISSION +
+                    ")" +
+                    "VALUES(?,?," + 0 + ")";
+
+            try {
+                PreparedStatement prSt = getDbConnection().prepareStatement(insert);
+                prSt.setString(1, user.getUsername());
+                prSt.setString(2, user.getPassword());
+
+                prSt.executeUpdate();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+
+
     }
 }

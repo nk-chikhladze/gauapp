@@ -15,7 +15,11 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class LoginController {
-    public String user,pass;
+    private static String user,pass;
+    private boolean check = false;
+    private int permission;
+
+    private ResultSet res;
 
     @FXML
     private ResourceBundle resources;
@@ -34,17 +38,12 @@ public class LoginController {
 
     @FXML
     void initialize() {
-        assert password != null : "fx:id=\"password\" was not injected: check your FXML file 'Main.fxml'.";
-        assert username != null : "fx:id=\"username\" was not injected: check your FXML file 'Main.fxml'.";
-        assert loginButton != null : "fx:id=\"loginButton\" was not injected: check your FXML file 'Main.fxml'.";
 
 
         loginButton.setOnMouseClicked((event) -> {
-            String usernameField = username.getText().trim();
-            String passwordField = password.getText().trim();
 
-            this.user = usernameField;
-            this.pass = passwordField;
+            this.user = username.getText().trim();
+            this.pass = password.getText().trim();
 
             DBHandler dbHandler = new DBHandler();
             try {
@@ -55,51 +54,102 @@ public class LoginController {
                 e.printStackTrace();
             }
 
-            if(usernameField.equals("root")){
-                closeWindow(loginButton);
+            User checkUser = new User(user, pass);
 
-                try {
-                    FXMLLoader fxmlLoader = new FXMLLoader();
-                    fxmlLoader.setLocation(getClass().getResource("../views/AdminPage.fxml"));
-
-                    Scene scene = new Scene(fxmlLoader.load());
-                    Stage stage = new Stage();
-                    stage.setTitle("Admin Page");
-                    stage.setScene(scene);
-                    stage.show();
-
-                } catch (IOException e) {
-                    Logger logger = Logger.getLogger(getClass().getName());
-                    logger.log(Level.SEVERE, "Failed to create new Window.", e);
+            res = dbHandler.getLogin(checkUser);
+            try {
+                while (res.next()) {
+                    if(res.getString("username").equals(user) && res.getString("password").equals(pass)){
+                        check = true;
+                        permission = res.getInt("permission");
+                        break;
+                    }
                 }
-            }else if(usernameField.equals("student")){
-                closeWindow(loginButton);
+            }catch(Exception ex){ex.printStackTrace();}
 
-                try {
-                    FXMLLoader fxmlLoader = new FXMLLoader();
-                    fxmlLoader.setLocation(getClass().getResource("../views/StudentPage.fxml"));
+            if(check){
+                switch(permission){
+                    case 1:
+                        closeWindow(loginButton);
 
-                    Scene scene = new Scene(fxmlLoader.load());
-                    Stage stage = new Stage();
-                    stage.setTitle("Student Page");
-                    stage.setScene(scene);
-                    stage.show();
-                } catch (IOException e) {
-                    Logger logger = Logger.getLogger(getClass().getName());
-                    logger.log(Level.SEVERE, "Failed to create new Window.", e);
+                        try {
+                            FXMLLoader fxmlLoader = new FXMLLoader();
+                            fxmlLoader.setLocation(getClass().getResource("../views/AdminPage.fxml"));
+
+                            Scene scene = new Scene(fxmlLoader.load());
+                            Stage stage = new Stage();
+                            stage.setTitle("Admin Page");
+                            stage.setScene(scene);
+                            stage.show();
+
+                        } catch (IOException e) {
+                            Logger logger = Logger.getLogger(getClass().getName());
+                            logger.log(Level.SEVERE, "Failed to create new Window.", e);
+                        }
+                        break;
+                    case 0:
+                        closeWindow(loginButton);
+
+                        try {
+                            FXMLLoader fxmlLoader = new FXMLLoader();
+                            fxmlLoader.setLocation(getClass().getResource("../views/StudentPage.fxml"));
+
+                            Scene scene = new Scene(fxmlLoader.load());
+                            Stage stage = new Stage();
+                            stage.setTitle("Student Page");
+                            stage.setScene(scene);
+                            stage.show();
+                        } catch (IOException e) {
+                            Logger logger = Logger.getLogger(getClass().getName());
+                            logger.log(Level.SEVERE, "Failed to create new Window.", e);
+                        }
+                        break;
                 }
-            }
+            }else
+                System.out.println("Wrong data!");
+
+//            if(this.user.equals("root")){
+//                closeWindow(loginButton);
+//
+//                try {
+//                    FXMLLoader fxmlLoader = new FXMLLoader();
+//                    fxmlLoader.setLocation(getClass().getResource("../views/AdminPage.fxml"));
+//
+//                    Scene scene = new Scene(fxmlLoader.load());
+//                    Stage stage = new Stage();
+//                    stage.setTitle("Admin Page");
+//                    stage.setScene(scene);
+//                    stage.show();
+//
+//                } catch (IOException e) {
+//                    Logger logger = Logger.getLogger(getClass().getName());
+//                    logger.log(Level.SEVERE, "Failed to create new Window.", e);
+//                }
+//            }else if(this.user.equals("student")){
+//                closeWindow(loginButton);
+//
+//                try {
+//                    FXMLLoader fxmlLoader = new FXMLLoader();
+//                    fxmlLoader.setLocation(getClass().getResource("../views/StudentPage.fxml"));
+//
+//                    Scene scene = new Scene(fxmlLoader.load());
+//                    Stage stage = new Stage();
+//                    stage.setTitle("Student Page");
+//                    stage.setScene(scene);
+//                    stage.show();
+//                } catch (IOException e) {
+//                    Logger logger = Logger.getLogger(getClass().getName());
+//                    logger.log(Level.SEVERE, "Failed to create new Window.", e);
+//                }
+//            }
         });
 
 
     }
 
     public String[] getLoginInfo(){
-//        String usernameField = username.getText().trim();
-//        String passwordField = password.getText().trim();
         String[] returnArr = new String[]{this.user,this.pass};
         return returnArr;
-
     }
 
     public void closeWindow(Button btn){

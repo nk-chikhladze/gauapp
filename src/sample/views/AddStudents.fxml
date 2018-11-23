@@ -8,22 +8,22 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="414.0" prefWidth="364.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.AddStudentsController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="414.0" prefWidth="364.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.AddStudentsController">
     <children>
         <Text layoutX="78.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student Registration">
             <font>
                 <Font size="23.0" />
             </font>
         </Text>
-        <TextField fx:id="name" layoutX="144.0" layoutY="64.0" />
-        <TextField fx:id="lastname" layoutX="144.0" layoutY="104.0" />
+        <TextField fx:id="regUsername" layoutX="144.0" layoutY="64.0" />
+        <TextField fx:id="regPass" layoutX="144.0" layoutY="104.0" />
         <TextField fx:id="gender" layoutX="144.0" layoutY="147.0" />
-        <Text layoutX="87.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name :">
+        <Text layoutX="60.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username :">
             <font>
                 <Font size="15.0" />
             </font>
         </Text>
-        <Text layoutX="64.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lastname :">
+        <Text layoutX="64.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password :">
             <font>
                 <Font size="15.0" />
             </font>
@@ -51,6 +51,6 @@
         </Text>
         <ComboBox fx:id="comb1" layoutX="143.0" layoutY="229.0" prefWidth="150.0" promptText="Select Faculty" />
         <ComboBox fx:id="comb2" layoutX="143.0" layoutY="271.0" prefWidth="150.0" promptText="Select Course" />
-        <Button layoutX="43.0" layoutY="331.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="278.0" text="Student Registration" />
+        <Button fx:id="regButton" layoutX="43.0" layoutY="331.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="278.0" text="Student Registration" />
     </children>
 </AnchorPane>

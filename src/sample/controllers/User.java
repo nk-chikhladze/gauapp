@@ -1,5 +1,6 @@
 package sample.controllers;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 public class User {
@@ -12,13 +13,13 @@ public class User {
     private String password;
     private int permission;
 
+    private static ObservableList<User> list = FXCollections.observableArrayList();
+
 
     //login constructor
     public User(String username, String password){
         this.username = username;
         this.password = password;
-
-
     }
 
     //full constructor
@@ -35,6 +36,15 @@ public class User {
     public User() {
 
     }
+
+    //select constructor
+    public User(int id, String usr, String pss, int perm){
+        this.id = id;
+        this.username = usr;
+        this.password = pss;
+        this.permission = perm;
+    }
+
     public int getId(){ return id; }
 
     public void setId(int id){ this.id = id; }
@@ -92,6 +102,15 @@ public class User {
     public void setGender(String gender) {
         this.gender = gender;
     }
+
+    public void fillTestData(){
+        list.add(new User(getId(),getUsername(),getPassword(),getPermission()));
+//        list.add(new User(2,"username2","password2",1));
+//        list.add(new User(3,"username3","password3",0));
+
+    }
+
+    public ObservableList<User> getList(){ return list; }
 
 
 }

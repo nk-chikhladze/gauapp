@@ -15,6 +15,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 public class StudentsController implements Initializable {
 
@@ -40,9 +41,7 @@ public class StudentsController implements Initializable {
     }
 
     public void initialize(URL location, ResourceBundle resources) {
-        assert selFaculty != null : "fx:id=\"selFaculty\" was not injected: check your FXML file 'Students.fxml'.";
-        assert selCourse != null : "fx:id=\"selCourse\" was not injected: check your FXML file 'Students.fxml'.";
-        assert selBtn != null : "fx:id=\"selBtn\" was not injected: check your FXML file 'Students.fxml'.";
+
 
         this.selFaculty.setItems(this.facultylist);
         this.selCourse.setItems(this.courselist);
@@ -55,28 +54,17 @@ public class StudentsController implements Initializable {
 
             User getInfo = new User(loginInfo[0], loginInfo[1]);
             DBHandler dbHandler = new DBHandler();
-            ResultSet resSet = dbHandler.getUser(getInfo);
+            ResultSet resSet = dbHandler.getFullUser(getInfo);
 
 
-            AdminController ac = new AdminController(resSet);
-//            ac.check();
-            ac.fillTable();
+//            AdminController ac = new AdminController(resSet);
+//            ac.fillTable();
+
 
             lc.closeWindow(selBtn);
             //Data is brought, need to show it somewhere
 
-//            try {
-//
-//                while (resSet.next()){
-//                    ac.colId.setText(Integer.toString(resSet.getInt("id")));
-//                    ac.colUser.setText(resSet.getString("username"));
-//                    ac.colPass.setText(resSet.getString("password"));
-//                    ac.colPass.setText(Integer.toString(resSet.getInt("permission")));
-//                };
-//
-//            }catch (Exception ex){
-//
-//            }
+
 
         });
     }
