@@ -18,6 +18,7 @@
                         <Font name="Britannic Bold" size="20.0" />
                     </font>
                 </Text>
+            <Button fx:id="massenger" layoutY="210.0" mnemonicParsing="false" onAction="#massenger" prefHeight="41.0" prefWidth="156.0" text="Massenger" />
             </children>
         </AnchorPane>
         <Label layoutX="156.0" prefHeight="508.0" prefWidth="579.0" style="-fx-background-color: grey;" />

@@ -103,6 +103,7 @@ public class User {
         this.gender = gender;
     }
 
+<<<<<<< HEAD
     public void fillTestData(){
         list.add(new User(getId(),getUsername(),getPassword(),getPermission()));
 //        list.add(new User(2,"username2","password2",1));
@@ -111,6 +112,18 @@ public class User {
     }
 
     public ObservableList<User> getList(){ return list; }
+=======
+    public ObservableList<String> getList(){
+        ObservableList<String> list = FXCollections.observableArrayList();
+        list.add("id");
+        list.add(getUsername());
+        list.add(getPassword());
+        list.add("permission");
+
+
+        return list;
+    }
+>>>>>>> 0c43b9c3665284eb98f4c5f2e34df155d3d6e4f9
 
 
 }
